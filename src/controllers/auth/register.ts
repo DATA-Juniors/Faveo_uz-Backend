@@ -23,10 +23,9 @@ export default async (req: Request, res: Response) => {
 
         const code: string = generateCode()
 
-        await sendEmail(user.email, code)
+        await sendEmail(user.email, code);
 
-        const verification = await createVerification(code, user.email)
-
+        const verification = await createVerification(code, user.email) 
         if ( verification ==null) {
             return res.status(500).json({
                 message: "Can't save verification"
